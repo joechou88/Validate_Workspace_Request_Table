@@ -33,5 +33,13 @@ The script validates whether the series mnemonics in the `REQUEST_TABLE` (starti
 * **Smart Skipping:** If the filename indicates a category (e.g., `financial_2005-2025.xlsm`) rather than a country, or if the country is not listed in the dictionary, the script safely logs a `[SKIPPED]` message and moves on without throwing an error.
 * **Background Context (Germany):** The original general series for Germany (`FDEALL`) is no longer valid. As a result, Germany is now divided into 8 specific company groups (where `Germany1` maps to `FDEALL1`, up to `FDEALL8`). All 8 files must be processed and later combined to assemble the complete German dataset.
 
-## Validate 
+## Validate frequency
+The script validates whether the data frequency specified in the `REQUEST_TABLE` (starting from column I, row 7 downwards) matches the frequency indicated by its parent folder's prefix (e.g., `annual_`, `quarterly_`, `daily_`).
+
+* **Annual Normalization:** 
+  * If a cell in column I is **blank**, the script defaults the frequency to `annual`.
+  * If a cell contains **`Yearly`** (the standard option from the Excel dropdown), the script normalizes it to `annual`.
+  * Both of these cases will successfully pass validation when the file is located inside an `annual_` folder.
+
+## Validate datatype
 每年公司數量不同，有些年度公司數量較多可能同組變數下不下來，可以再把變數切更多組，只要確保所有變數組起來都一致即可
