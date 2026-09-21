@@ -42,4 +42,11 @@ The script validates whether the data frequency specified in the `REQUEST_TABLE`
   * Both of these cases will successfully pass validation when the file is located inside an `annual_` folder.
 
 ## Validate datatype
-每年公司數量不同，有些年度公司數量較多可能同組變數下不下來，可以再把變數切更多組，只要確保所有變數組起來都一致即可
+The script verifies that the requested variables (datatypes) in column F of the `REQUEST_TABLE` exactly match the expected complete list for that specific dataset. You can flexibly add new folders and their corresponding datatype rules to `config.EXPECTED_DATATYPES` to expand validation capabilities.
+
+* **Standard Validation:** For most folders, the script checks the datatypes row-by-row against the expected list. Any missing variables will be explicitly listed in the error log.
+* **Multi-File Aggregation (`annual_financials_global`):** 
+  * Because the number of active companies fluctuates by year, large datasets often exceed Workspace download limits. This requires variables to be split into multiple files (indicated by the filename suffix, e.g., `_A`, `_BCD`).
+  * To handle this, the script intelligently groups files and **aggregates datatypes by Country and Year** before verifying completeness. As long as the combined set of variables across all split files is complete, the validation passes.
+  * *Single-year split example:* Variables from `Vietnam_2023_ABC.xlsm` and `Vietnam_2023_D.xlsm` are automatically combined and validated as a single 2023 dataset.
+  * *Multi-year split example:* For files like `Switzerland_2015-2018_A.xlsm` through `Switzerland_2015-2018_E.xlsm`, the script correctly maps rows to specific years (e.g., F7 for 2015, F8 for 2016, etc.), aggregates the datatypes across all suffix files year-by-year, and validates each year independently.
