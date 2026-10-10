@@ -59,8 +59,8 @@ def validate_excel_series(filepath):
             has_data = True
             series = str(worksheet[f"E{current_row}"].value).strip()
 
-            if series != file_series:
-                return f"[MISMATCH] {filename} row {current_row}: Expected '{file_series}', found '{series}' in request table."
+            if series not in file_series:
+                return f"[MISMATCH] {filename} row {current_row}: Expected one of {file_series}, found '{series}' in request table."
             
             current_row += 1
 
