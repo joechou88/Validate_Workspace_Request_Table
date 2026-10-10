@@ -62,7 +62,7 @@ def validate_excel_series(filepath):
 
             for mnem in cell_mnemonics:
                 if mnem not in file_series:
-                    return f"[MISMATCH] {filename} row {current_row}: Expected one of {file_series}, found '{series}' in request table."
+                    return f"[MISMATCH] {filename} row {current_row}: Expected one of {file_series}, but found invalid '{mnem}' (from '{raw_series}') in request table."
             
             current_row += 1
 
