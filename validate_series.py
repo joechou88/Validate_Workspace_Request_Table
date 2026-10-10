@@ -57,10 +57,12 @@ def validate_excel_series(filepath):
         # Loop downwards in column E until an empty cell is encountered
         while worksheet[f"E{current_row}"].value is not None:
             has_data = True
-            series = str(worksheet[f"E{current_row}"].value).strip()
+            raw_series = str(worksheet[f"E{current_row}"].value).strip()
+            cell_mnemonics = [s.strip() for s in raw_series.split(',')]
 
-            if series not in file_series:
-                return f"[MISMATCH] {filename} row {current_row}: Expected one of {file_series}, found '{series}' in request table."
+            for mnem in cell_mnemonics:
+                if mnem not in file_series:
+                    return f"[MISMATCH] {filename} row {current_row}: Expected one of {file_series}, found '{series}' in request table."
             
             current_row += 1
 
