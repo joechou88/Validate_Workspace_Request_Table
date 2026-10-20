@@ -15,7 +15,7 @@ class Utility:
             'country': info.get('country') or info.get('category'),
             'company': int(info['company']) if info.get('company') else None,
             'start_year': int(info['start_year']),
-            'end_year': int(info['end_year']) if info.get('end_year') else None,
+            'end_year': int(info['end_year']) if info.get('end_year') else int(info['start_year']),
             'suffix': list(info['suffix']) if info.get('suffix') and len(info['suffix']) > 1 else info.get('suffix')
         }
 

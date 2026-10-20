@@ -40,9 +40,8 @@ COUNTRY_MNEMONIC = {
     "Estonia": ["FESTONIA"],
     "Finland": ["FFIALL", "FFIN"],
     "France": ["FFRALL", "FFRA"],
-    "Germany": ["FGER1", "FGER2"],
-    "Germany1": ["FDEALL1"],
-    "Germany2": ["FDEALL2"],
+    "Germany1": ["FDEALL1", "FGER1"],
+    "Germany2": ["FDEALL2", "FGER2"],
     "Germany3": ["FDEALL3"],
     "Germany4": ["FDEALL4"],
     "Germany5": ["FDEALL5"],
@@ -70,9 +69,9 @@ COUNTRY_MNEMONIC = {
     "Poland": ["FPLALL", "FPOL"],
     "Portugal": ["FPTALL", "FPOR"],
     "Romania": ["FROM"],
-    "Russian Federation": ["FRUS"],
+    "Russian-Federation": ["FRUS"],
     "Singapore": ["FSGALL", "FSINQ"],
-    "South Africa": ["FSAF"],
+    "South-Africa": ["FSAF"],
     "South-Korea": ["FKRALL", "FKOR"],
     "Spain": ["FESALL", "FSPN"],
     "Sweden": ["FSEALL", "FSWD"],
@@ -83,6 +82,16 @@ COUNTRY_MNEMONIC = {
     "UK": ["FGBALL", "FBRIT"],
     "Uruguay": ["FURNE"],
     "Vietnam": ["FVNALL", "FVTNM"]
+}
+
+REQUIRED_COUNTRIES = {
+    "Argentina", "Australia", "Austria", "Belgium", "Brazil", "Canada", "China", "Columbia",
+    "Denmark", "Finland", "France", "Germany1", "Germany2", "Germany3", "Germany4",
+    "Germany5", "Germany6", "Germany7", "Germany8", "Greece", "Hong-Kong", "Hungary",
+    "India", "Indonesia", "Ireland", "Israel", "Italy", "Japan", "Malaysia", "Mexico",
+    "Netherlands", "New-Zealand", "Norway", "Pakistan", "Peru", "Philippines", "Poland",
+    "Portugal", "Singapore", "South-Korea", "Spain", "Sweden", "Switzerland", "Taiwan",
+    "Thailand", "Turkey", "UK", "Vietnam"
 }
 
 EXPECTED_DATATYPES = {

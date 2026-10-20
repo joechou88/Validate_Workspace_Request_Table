@@ -50,3 +50,9 @@ The script verifies that the requested variables (datatypes) in column F of the 
   * To handle this, the script intelligently groups files and **aggregates datatypes by Country and Year** before verifying completeness. As long as the combined set of variables across all split files is complete, the validation passes.
   * *Single-year split example:* Variables from `Vietnam_2023_ABC.xlsm` and `Vietnam_2023_D.xlsm` are automatically combined and validated as a single 2023 dataset.
   * *Multi-year split example:* For files like `Switzerland_2015-2018_A.xlsm` through `Switzerland_2015-2018_E.xlsm`, the script correctly maps rows to specific years (e.g., F7 for 2015, F8 for 2016, etc.), aggregates the datatypes across all suffix files year-by-year, and validates each year independently.
+
+## Validate country completeness
+The script verifies that `.xlsm` files containing country names have the complete set of 41 required countries defined in `config.REQUIRED_COUNTRIES` across the specified year range. Surplus countries are allowed, but any missing countries are explicitly saved to `country_incomplete_list.txt`.
+
+- **Workspace Series Rename Exception:** Due to a Workspace series rename, data prior to 2024 only requires `Germany1` and `Germany2`. From 2024 onwards, the script strictly requires the complete set from `Germany1` through `Germany8`.
+- **Data Downloading Best Practice:** Always download each series as a separate file (e.g., `Germany1_2015.xlsm` and `Germany2_2015.xlsm`). Avoid placing multiple series into a single request table under a generic filename like `Germany_2015.xlsm`. If files are generically named, the script cannot map them to the required series and will still list `Germany1`, `Germany2`, etc., as missing in the text file, requiring you to manually ignore those false positives.
