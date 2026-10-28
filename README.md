@@ -56,3 +56,13 @@ The script verifies that `.xlsm` files containing country names have the complet
 
 - **Workspace Series Rename Exception:** Due to a Workspace series rename, data prior to 2024 only requires `Germany1` and `Germany2`. From 2024 onwards, the script strictly requires the complete set from `Germany1` through `Germany8`.
 - **Data Downloading Best Practice:** Always download each series as a separate file (e.g., `Germany1_2015.xlsm` and `Germany2_2015.xlsm`). Avoid placing multiple series into a single request table under a generic filename like `Germany_2015.xlsm`. If files are generically named, the script cannot map them to the required series and will still list `Germany1`, `Germany2`, etc., as missing in the text file, requiring you to manually ignore those false positives.
+
+### Series Completeness Validation (`series_completeness.py`)
+
+Validates the completeness of company series codes for insurance datasets against the predefined lists defined in `config.EXPECTED_SERIES`.
+
+**Target Files:** `.xlsm` files containing `life-insurance` or `non-life-insurance` in the filename.
+
+**Validation Logic:**
+* **Single Files** (e.g., `life-insurance_annual-financial_2005-2025.xlsm`): Scans Column E (starting from E7 downwards) to ensure the complete list of expected company codes is present.
+* **Split Files** (e.g., `life-insurance-1_...`, `life-insurance-2_...`): Aggregates the codes from Column E (E7 downwards) across all files within the same group sequence. The combined set of codes is then checked against the expected company codes list.
