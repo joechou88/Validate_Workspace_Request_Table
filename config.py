@@ -23,7 +23,7 @@ FILENAME_PATTERN = re.compile(
 # Simple regex to extract a 4-digit year from cell values (e.g., '2018-01-01' or '10/12/2023')
 CELL_YEAR_PATTERN = re.compile(r'((?:19|20)\d{2})')
 
-EXCLUDED_FOLDERS = {'insurance_company_list', 'annual_audit_fee', '__pycache__'}
+EXCLUDED_FOLDERS = {'insurance_company_list', 'annual_audit_fee', '__pycache__', '.git'}
 
 COUNTRY_MNEMONIC = {
     "Argentina": ["FARALL", "FPARGA"],
@@ -33,7 +33,7 @@ COUNTRY_MNEMONIC = {
     "Brazil": ["FBRALL", "FBRA"],
     "Bulgaria": ["FBULGOFF"],
     "Canada": ["FCAALL", "FCANS"],
-    "Chile": ["FCHILE"],
+    "Chile": ["FCLALL", "FCHILE"],
     "China": ["FCNALL", "FCHINA"],
     "Columbia": ["FCOALL", "FCOL"],
     "Denmark": ["FDKALL", "FDEN"],
@@ -71,7 +71,7 @@ COUNTRY_MNEMONIC = {
     "Romania": ["FROM"],
     "Russian-Federation": ["FRUS"],
     "Singapore": ["FSGALL", "FSINQ"],
-    "South-Africa": ["FSAF"],
+    "South-Africa": ["FZAALL", "FSAF"],
     "South-Korea": ["FKRALL", "FKOR"],
     "Spain": ["FESALL", "FSPN"],
     "Sweden": ["FSEALL", "FSWD"],
